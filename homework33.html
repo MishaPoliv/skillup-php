@@ -1,35 +1,55 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <style>
+        lable {
+            border: 1px solid red;
+            padding: 1px;
+        }
+        .block {
+            padding: 1px;
+            border: solid 1px black;
+            float: left;
+        }
+    </style>
 </head>
 
 <body>
+
+
 <form>
 
-<input type="checkbox"">Это метка для чекбокса: нажмите на меня - чекбокс сменит галочку!
+    <input type="checkbox">
+    <lable>Это метка для чекбокса: нажмите на меня - чекбокс сменит галочку!</lable>
 
-<br><br>
-<input type="checkbox" checked>Я отмечен по умолчанию!<br><br>
+    <br><br>
+    <input type="checkbox" checked>
+    <lable>Я отмечен по умолчанию!</lable>
+    <br><br>
 
-<input type="checkbox" disabled checked>Я disabled!
-<br><br>
+    <input type="checkbox" disabled checked>
+    <lable>Я disabled!</lable>
+    <br><br>
 
     <table width="100%" border="1"  cellspacing="0" >
 
-        <tr>
-            <th valign="left" width="30">
+        <div class="block">
 
-                Это группа радиокнопок - только одна из них может быть отмечена!<br><br>
+                <p>
+                    Это группа радиокнопок - только одна из них может быть отмечена!
+                </p>
 
-                <input type="radio" name="radio1"> Это метка для радио<br><br>
-                <input type="radio" name="radio1"> Это метка для радио
+              <input type="radio" name="radio1">
+                <lable>Это метка для радио</lable>
 
+                <br><br>
 
+              <input type="radio" name="radio1">
+                <lable>Это метка для радио</lable>
 
-            </th>
+<br><br>
 
-
-        </tr>
+        </div>
     </table>
 
 </form>
