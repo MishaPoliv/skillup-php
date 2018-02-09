@@ -6,6 +6,7 @@ result = c + d;
 
 alert (result);
 
+
 //3e
 var a, b, c, sum;
 a = 10;
@@ -15,6 +16,7 @@ c = 5;
 sum= a + b + c;
 
 alert (sum);
+
 
 //4e
 var a, b, c, d, result;
