@@ -25,34 +25,59 @@ console.log(user.YearB);
 //Создайте ассоциативный массив свойство mas которое содержит массив чисел (любого количества),
 //добавьте метод, который выводит сумму чисел содержащихся в mas.
 
-mas = [5, 6, 34, 12, 45, 99, 104, 3, 1];
+//var mas = [5, 6, 34, 12, 45, 99, 104, 3, 1];
+
+//var sum = 0;
+//for (var i = 0; i < mas.length; i++) {
+//    sum += mas[i]; }
+
+//    console.log(sum);
 
 
-var sum = 0;
-for (var i = 0; i < mas.length; i++) {
-    sum += mas[i]; }
+var arr = {
+    mas: [5, 6, 34, 12, 45, 99, 104, 3, 1]
+};
 
-    console.log(sum);
+arr.sum = function () {
+    var res = 0;
+
+    this.mas.forEach(function(value){
+        res += value;
+    });
+  return res;
+};
+alert('sum:' + arr.sum());
+
 
 //                      Задание 4
 // Создайте массив, ключами которого служат артикулы товара (любое пятизначное число),
 // а значениями – ассоциативный массив, который содержит название товара, стоимость,
 // вес единицы товара, ссылку на изображение, отметку о доступности товара на складе.
 
+//document.write(obj[10001].masa + '<br>'); << Для себя
+//result.innerHTML = 'Photo: < img src="' + obj[10001].ssilka + '"> <br>'; << ili tak
+
 //Выведите массив в консоль. Выведите на страницу HTML описание первого товара.
 
 
 var obj = {
-            10001: {name: 'креветка', price: '149.00', masa: '2 kg', ssilka: 'homework5forLe5/krevetka.jpg', ready: 'Yes'},
-            51000: {name: 'Треска', price: '53.40', masa: '1 kg', ssilka: 'homework5forLe5/treska.jpg', ready: 'No'},
-            89625: {name: 'Якорь', price: '2999.99', masa: '60 kg', ssilka: 'homework5forLe5/yakor.jpg', ready: 'Yes'},
-            71755: {name: 'Леска', price: '70.00', masa: '0.12 kg', ssilka: 'homework5forLe5/leska.jpg', ready: 'Yes'}
+            10001: {name: 'креветка', price: '149.00', masa: '2 kg', ssilka: 'https://github.com/MishaPoliv/skillup-php/tree/homework5forLe5/krevetka.jpg', ready: 'Yes'},
+            51000: {name: 'Треска', price: '53.40', masa: '1 kg', ssilka: 'https://github.com/MishaPoliv/skillup-php/tree/homework5forLe5/treska.jpg', ready: 'No'},
+            89625: {name: 'Якорь', price: '2999.99', masa: '60 kg', ssilka: 'https://github.com/MishaPoliv/skillup-php/tree/homework5forLe5/yakor.jpg', ready: 'Yes'},
+            71755: {name: 'Леска', price: '70.00', masa: '0.12 kg', ssilka: 'https://github.com/MishaPoliv/skillup-php/tree/homework5forLe5/leska.jpg', ready: 'Yes'}
     };
 
 console.log(obj);
-document.write(obj);
+ //<<  ili tak
 
-
+for (art in obj) {
+    document.write(obj[art].name + '<br>');
+    document.write(obj[art].price + '<br>');
+    document.write(obj[art].masa + '<br>');
+    document.write('Photo: <img src="' + obj[art].ssilka + '"> <br>');
+    document.write(obj[art].ready + '<br>');
+    document.write('<hr>');
+}
 
 
 //                        Задача  5
