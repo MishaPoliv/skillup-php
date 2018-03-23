@@ -1,90 +1,17 @@
 <?php
+//Задача 5 Дана строка 'a1a a22a a333a a4444a a55555a aba aca'.
+// Напишите регулярку, которая найдет строки,
+// в которых по краям стоят буквы 'a', а между ними любое количество цифр.
 
-class User
-{
-    protected $name;
-    protected $age;
+echo preg_replace('#\D+#', '!', 'a1a a22a a333a a4444a a55555a aba aca'). '<br>'. '<br>';
 
-    public function getName()
-    {
-        return $this->name;
-    }
+//Задача 8 Дана строка 'ave a#b a2b a$b a4b a5b a-b acb'. Напишите регулярку,
+// которая найдет строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не буква и не цифра.
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+echo preg_replace('#a[\w+]b#', '!', 'ave a#b a2b a$b a4b a5b a-b acb'). '<br>'. '<br>';
 
-    public function getAge()
-    {
-        return $this->age;
-    }
+//Задача 19 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки
+// следующего вида: по краям стоят буквы 'a',
+// а между ними - маленькие и большие латинские буквы, не затронув остальных.
 
-    public function setAge($age)
-    {
-        $this->age = $age;
-    }
-
-}
-
-class Worker extends User
-{
-    private $salary;
-
-    public function getSalary()
-    {
-        return $this->salary;
-    }
-
-    public function setSalary($salary)
-    {
-        $this->salary = $salary;
-    }
-
-    public function __construct($name, $age, $salary)
-    {
-        $this->name = $name;
-        $this->age = $age;
-        $this->salary = $salary;
-    }
-
-}
-
-$user1 = new Worker('Иван', 25, 1000);
-$user2 = new Worker('Вася', 26, 2000);
-
-
-$SumSalary = $user1->getSalary() + $user2->getSalary();
-
-
-echo '<h3>Задача №5</h3><br>';
-echo $SumSalary;
-
-class Student extends User
-{
-
-    private $grant;
-    private $course;
-
-    public function getGrant()
-    {
-        return $this->grant;
-    }
-
-    public function setSalary($grant)
-    {
-        $this->grant = $grant;
-    }
-
-    public function getCourse()
-    {
-        return $this->course;
-    }
-
-    public function setCourse($course)
-    {
-        $this->course = $course;
-    }
-
-}
-
+echo preg_replace('#a[a-zA-Z]a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa'). '<br>'. '<br>';
