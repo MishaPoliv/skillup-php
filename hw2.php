@@ -1,39 +1,30 @@
 <?php
 
-// Задача №3 Спросите у пользователя email с помощью формы. Затем сделайте так,
-// чтобы в другой форме (поля: имя, фамилия, пароль, email)
-// при ее открытии поле email было автоматически заполнено.
-?>
+//Есть 2 таблицы:
+//- users - пользователи (id, name) (id, n)
+//- orders - заказы (id, user_id, status) (id, o_id, s)
 
-    <form action="" method="GET">
-        <input type="text" name="email">
-        <input type="submit"> your email
-    </form> <br> <br>
+//1) Выбрать Id заказа и соответствующих пользователей из таблицы users,
+// у которых записи в таблице orders имеют status = 0;
 
-<?php
-   $email = $_REQUEST['email'];
+//SELECT u.id, u.name, o.name AS o_name
+//FROM users u
+//INNER JOIN orders o ON u.s = 0
 
-    ?>
 
-    <form action="" method="GET">
-        <input type="text" name="Name">
-        <input type="submit"> Name
-    </form>
+//2) Выбрать пользователей у которых есть невыполненные заказы, status = 0;
+//SELECT u.id, u.name, o.name AS o_name
+//FROM users u
+//INNER JOIN orders o ON u.s = 0
 
-    <form action="" method="GET">
-        <input type="text" name="2d-Name">
-        <input type="submit"> 2d-name
-    </form>
 
-    <form action="" method="GET">
-        <input type="text" name="password">
-        <input type="submit"> Password
-    </form>
+//3) Выбрать Id, имя, и кол-во заказов всех пользователей из таблицы users,
+// у которых 3 и больше записей поля 'status' = '1' в таблице orders
 
-    <form action="" method="GET">
-        <input type="text" name="email" value="<?php echo $email ?>">
-        <input type="submit"> email
-    </form>
 
-<br> <br>
-
+//INNER JOIN (
+//        SELECT u.id u.name, o.name AS o_name
+//        FROM status
+//        GROUP BY status
+//        HAVING COUNT(*) > 3
+//        )

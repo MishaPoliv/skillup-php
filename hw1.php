@@ -1,67 +1,63 @@
 <?php
-//Задача №5  Найдите количество целых часов, прошедших с 7:23:48 текущего дня до настоящего момента времени.
 
-$time = time() - mktime(7, 23, 48);
-echo floor($time / (60 * 60)) . '<br>';
-
-
-//Задача №9 Создайте массив дней недели $week. Выведите на экран название текущего дня
-// недели с помощью массива $week и функции date.
-// Узнайте какой день недели был 06.06.2006, в ваш день рождения.
-
-$week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-echo $week[date('w',  mktime(0, 0, 0, 6, 6, 2006))] . '<br>';
-
-
-//Задача №12 Сделайте поле ввода, в которое пользователь вводит год (4 цифры), а скрипт определяет високосный ли год.
-?>
-<form action="" method="GET">
-	<input type="text" name="year">
-	<input type="submit">
-</form>
-<?php
-    if (isset($_REQUEST['year'])) {
-         $year = $_REQUEST['year'];
-    if (date('L', mktime(0, 0, 0, 1, 1, $year)) == 1) {
-         echo 'год высокосный';
-    } else {
-         echo 'год не высокосный';
-           }
-    }
-echo '<br>';
+// Выбрать работника с id = 3.
+$query = "SELECT * FROM workers WHERE id=3";
+//Выбрать работников с зарплатой 1000$.
+$query = "SELECT * FROM workers WHERE salary=1000";
+//Выбрать работников в возрасте 23 года.
+$query = "SELECT * FROM workers WHERE age=23";
+//Выбрать работников с зарплатой более 400$
+$query = "SELECT * FROM workers WHERE salary>400";
+//Выбрать работников с зарплатой равной или большей 500$
+$query = "SELECT * FROM workers WHERE salary<=500";
+//Выбрать работников с зарплатой НЕ равной 500$.
+$query = "SELECT * FROM workers WHERE salary<>500";
+//Выбрать работников с зарплатой равной или меньшей 900$.
+$query = "SELECT * FROM workers WHERE salary<=900";
+//Узнайте зарплату и возраст Васи.
+$query = "SELECT * FROM workers WHERE name='Вася'";
 
 
-//Задача №18 В переменной $date лежит дата в формате '2025-12-31'.
-// Прибавьте к этой дате 2 дня, 1 месяц и 3 дня, 1 год. Отнимите от этой даты 3 дня.
-
-//    $date = mktime(0, 0, 0, 12, 31, 2025);
-//    echo $date + mktime(0,0,0,1, 2) . '<br>';
-//    echo $date + mktime(0,0,0, 0,3 ,1);
-
-
-    $date =  date_create('2025-12-31');
-date_modify($date, '2 day');
-echo date_format($date, 'd.m.Y'). '<br>';
-
-
-    $date =  date_create('2025-12-31');
-date_modify($date, '1 month 3 day');
-echo date_format($date, 'd.m.Y'). '<br>';
-
-
-    $date =  date_create('2025-12-31');
-date_modify($date, '1 year');
-echo date_format($date, 'd.m.Y'). '<br>';
+//Выбрать работников в возрасте от 25 (не включительно) до 28 лет (включительно).
+$query = "SELECT * FROM workers WHERE age>25 AND age<=3";
+//Выбрать работника Петю.
+$query = "SELECT * FROM workers WHERE name='Петя'";
+//Выбрать работников Петю и Васю.
+$query = "SELECT * FROM workers WHERE name='Петя' AND name='Вася'";
+//Выбрать всех, кроме работника Петя.
+$query = "SELECT * FROM workers WHERE name!='Петя'";
+//Выбрать всех работников в возрасте 27 лет или с зарплатой 1000$.
+$query = "SELECT * FROM workers WHERE salary=1000 OR age=27";
+//Выбрать всех работников в возрасте от 23 лет (включительно) до 27 лет (не включительно) или с зарплатой 1000$.
+$query = "SELECT * FROM workers WHERE salary=1000 OR age>23 AND age<27";
+//Выбрать всех работников в возрасте от 23 лет до 27 лет или с зарплатой от 400$ до 1000$.
+$query = "SELECT * FROM workers WHERE salary>400 AND salary<1000 OR age>23 AND age<27";
+//Выбрать всех работников в возрасте 27 лет или с зарплатой не равной 400$.
+$query = "SELECT * FROM workers WHERE salary!=400 OR age=27";
 
 
-    $date =  date_create('2025-12-31');
-date_modify($date, '-3 day');
-echo date_format($date, 'd.m.Y'). '<br>'.'<br>';
+//Добавьте нового работника Никиту, 26 лет, зарплата 300$. Воспользуйтесь первым синтаксисом.
+$query = "INSERT INTO workers SET name='Никита', age=26, salary=300";
+//Добавьте нового работника Светлану с зарплатой 1200$. Воспользуйтесь вторым синтаксисом.
+$query = "INSERT INTO workers (name, salary) VALUES ('Светлана', 1200)";
+//Добавьте двух новых работников одним запросом:
+// Ярослава с зарплатой 1200$ и возрастом 30, Петра с зарплатой 1000$ и возрастом 31.
+$query = "INSERT INTO workers (name, age, salary) VALUES ('Ярослав', 30, 1200), VALUES ('Петя', 31, 1000)";
 
+//Удалите работника с id=7.
+$query = "DELETE FROM workers WHERE id = 7";
+//Удалите Колю.
+$query = "DELETE FROM workers WHERE name = 'Коля'";
+//Удалите всех работников, у которых возраст 23 года.
+$query = "DELETE FROM workers WHERE age=23";
 
-//Задача №19 Узнайте сколько дней осталось до Нового Года. Скрипт должен работать в любом году.
-
-$dayToNY = mktime(23,59,59, 12,31);
-$dayToNY = $dayToNY + mktime(1,0,1,1,1,1970);;
-$today = mktime();
-echo floor(($dayToNY-$today)/(60*60*24)).'<br>';
+//Поставьте Васе зарплату в 200$.
+$query = "UPDATE workers SET salary = 200 WHERE name = 'Вася'";
+//Работнику с id=4 поставьте возраст 35 лет.
+$query = "UPDATE workers SET age = 35 WHERE id = 4";
+// Всем, у кого зарплата 500$ сделайте ее 700$.
+$query = "UPDATE workers SET salary=700 WHERE salary = 500";
+//Работникам с id больше 2 и меньше 5 включительно поставьте возраст 23.
+$query = "UPDATE workers SET age = 23 WHERE id > 2 AND id < 5";
+//Поменяйте Васю на Женю и прибавьте ему зарплату до 900$.
+$query = "UPDATE workers SET salary=900 WHERE name = 'Вася' AND name = 'Женя'";
