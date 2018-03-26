@@ -39,46 +39,29 @@ if ($Number <> 0)
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="scriptsVisible.js"></script>
-    <script src="scriptsHide.js"></script>
-    <style>
-        #panel {
-            height: 200px;
-            background: green;
-            border: 5px solid red;
-        }
-        .active {
-            background-color: aqua;
-        }
-        .delete{
-            float: right;
-            width: 150px;
-        }
-    </style>
-</head>
+    <title>HomeWork for Hide Button</title>
+    </head>
 <body>
 
 <?php
+
+
 $flag = 0;
-setcookie('flag', $flag, time()+3600);
+if ($_COOKIE['flag'] == 1) { }
+    else {setcookie('flag', $flag, time()+3600);}
+if ($_COOKIE['flag'] == 0)
+{
+    ?>    <a href="" target=""><button>Непоказывать больше!</button></a>   <?php
 
-if ($flag == 0) {
-    //работает scriptsVisible.js
     $flag = 1;
-    $_COOKIE['flag'] = 1;
-} else {
-    //работает scriptsHide.js
-}
+    setcookie('flag', $flag, time()+3600);
+ //   echo $_COOKIE['flag']  .'<br>';
 
+} else {
+
+}
 ?>
 
-<div id="panel" class="panel">
-    <img class="delete" src="https://gamesqa.ru/wp-content/uploads/2017/03/close-button-300x300.jpg">
-    <br>
-    <h1>Баннер</h1></div>
-<br><br>
 
 
 </body>
